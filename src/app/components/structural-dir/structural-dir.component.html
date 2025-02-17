@@ -1,0 +1,135 @@
+<div class="row">
+    <div class="col-3">
+        <div *ngIf="isDivVisiable == 'Yes'" class="p-4 bg-secondary">
+            Div 1
+        </div>
+    </div>
+    <div class="col-3">
+        <div *ngIf="num1 == num2" class="p-4 bg-danger">
+            Div 2
+        </div>
+    </div>
+    <div class="col-3">
+        <div *ngIf="isCheked == true" class="p-4 bg-success">
+            Div 3
+        </div>
+    </div>
+    <div class="col-3">
+        <div>
+            Div 1
+        </div>
+    </div>
+</div>
+<div class="row pt-3">
+    <div class="col-3">
+        <button class="btn btn-success" (click)="onShowDiv1()">Show</button>
+        <button class="btn btn-danger" (click)="onHideDiv1()">Hide</button>
+    </div>
+    <div class="col-3">
+        <input type="text" placeholder="NUm1" [(ngModel)]="num1">
+        <input type="text" placeholder="NUm1" [(ngModel)]="num2">
+    </div>
+    <div class="col-3">
+        <input type="checkbox" [(ngModel)]="isCheked">
+    </div>
+    <div class="col-3">
+        <div>
+            Div 1
+        </div>
+    </div>
+</div>
+
+<hr>
+<div class="row">
+    <div class="col-3">
+        <label *ngFor="let city of cityList" for=""> {{city}}</label>
+    </div>
+    <div class="col-3">
+        <ul>
+            <li *ngFor="let cityName of cityList"> {{cityName}}</li>
+        </ul>
+    </div>
+    <div class="col-3">
+        <button class="btn btn-success mx-2" *ngFor="let rollno of rollNoList"> {{rollno}} </button>
+    </div>
+    <div class="col-3">
+        <div *ngFor="let city of cityList">
+            <label> City Name: </label> <span>{{city}}</span>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-3">
+        <select name="" id="">
+            <option *ngFor="let city of cityList"> {{city}}</option>
+        </select>
+    </div>
+    <div class="col-3">
+        <select [(ngModel)]="selecteStudent">
+            <option *ngFor="let Stud of studentList" [value]="Stud.id">{{Stud.name}} {{Stud.city}}</option>
+        </select>
+    </div>
+    <div class="col-3">
+        {{selecteStudent}}
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th> Sr No</th>
+                    <th> Name</th>
+                    <th>City</th>
+                    <th>Status</th>
+                    <th>Attendance %</th>
+                    <th>Pincode</th>
+                    <th>Contact Nos</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let stud of studentList;let srno = index;let isFirst= first;let isLast = last">
+                    <td> {{srno +1}}</td>
+                    <td> {{stud.name}}</td>
+                    <td> {{stud.city}}</td>
+                    <td>
+                        <span *ngIf="stud.isActive" class="text-success">Active</span>
+                        <span *ngIf="stud.isActive == false" class="text-danger">De-Active</span>
+                    </td>
+                    <td>
+                        <span class="text-danger" *ngIf="stud.attedance < 50">Low</span>
+                        {{stud.attedance < 50 ? "Low" :""}} {{stud.attedance}}</td>
+                    <td>
+                        {{stud.address.pincode}}
+                    </td>
+                    @if (isFirst) {
+                        <td class="bg-success">
+                            -- {{isFirst}} :: {{isLast}}
+                            {{ stud.contactNo ? stud.contactNo[0]:"NA"}}
+                            <ul>
+                                <li *ngFor="let mobile of stud.contactNo"> {{mobile}}</li>
+                            </ul>
+                        </td>
+                    } @else if(isLast) {
+                        <td  class="bg-danger">
+                            -- {{isFirst}} :: {{isLast}}
+                            {{ stud.contactNo ? stud.contactNo[0]:"NA"}}
+                            <ul>
+                                <li *ngFor="let mobile of stud.contactNo"> {{mobile}}</li>
+                            </ul>
+                        </td>
+                    } @else {
+                        <td >
+                            -- {{isFirst}} :: {{isLast}}
+                            {{ stud.contactNo ? stud.contactNo[0]:"NA"}}
+                            <ul>
+                                <li *ngFor="let mobile of stud.contactNo"> {{mobile}}</li>
+                            </ul>
+                        </td>
+                    }
+                   
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

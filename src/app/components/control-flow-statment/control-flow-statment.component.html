@@ -1,0 +1,157 @@
+<div class="row">
+    <div class="col-3">
+        @if(isDivVisiable == 'Yes') {
+            <div  class="p-4 bg-secondary">
+                Div 1
+            </div>
+        }  
+    </div>
+    <div class="col-3">
+        @if (num1 == num2) {
+            <div   class="p-4 bg-danger">
+                Both No Are Same
+            </div>
+        } @else {
+            <div   class="p-4 bg-success">
+               NO Are diff
+            </div>
+        } 
+    </div>
+    <div class="col-3">
+        <div   class="p-4 bg-success">
+            @if (dayStartChar.toLowerCase() == 'mo') {
+                <span>Day: Monday</span>
+            } @else if (dayStartChar == 'Tu') {
+                <span>Day: Tuesday</span>
+            } @else if (dayStartChar == 'We') {
+                <span>Day: Wednesday</span>
+            } @else if (dayStartChar == 'Th') {
+                <span>Day: Thursday</span>
+            } @else if (dayStartChar == 'Fr') {
+                <span>Day: Friday</span>
+            } @else if (dayStartChar == 'Sa') {
+                <span>Day: Saturdsay</span>
+            } @else if (dayStartChar == 'Su') {
+                <span>Day: Sunday</span>
+            } @else {
+                <span>Wrong Entry</span>
+            } 
+        </div>
+    </div>
+    <div class="col-3">
+        <div>
+            Div 1
+        </div>
+    </div>
+</div>
+<div class="row pt-3">
+    <div class="col-3">
+        <button class="btn btn-success" (click)="onShowDiv1()">Show</button>
+        <button class="btn btn-danger" (click)="onHideDiv1()">Hide</button>
+    </div>
+    <div class="col-3">
+        <input type="text" placeholder="NUm1" [(ngModel)]="num1">
+        <input type="text" placeholder="NUm1" [(ngModel)]="num2">
+    </div>
+    <div class="col-3">
+        <input type="text" [(ngModel)]="dayStartChar">
+    </div>
+    <div class="col-3">
+        <div>
+            Div 1
+        </div>
+    </div>
+</div>
+
+<hr>
+<div class="row">
+    <div class="col-3">
+        @for (item of cityList; track $index) {
+            <label   for=""> {{item}} </label>
+        }
+       
+    </div>
+    <div class="col-3">
+        <ul>
+            @for (city of cityList; track $index) {
+                <li >  {{city}}</li>
+            }
+           
+        </ul>
+    </div>
+    <div class="col-3">
+        <button class="btn btn-success mx-2"  >   </button>
+    </div>
+    <div class="col-3">
+        <div  >
+            <label> City Name: </label> <span> </span>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-3">
+        <select name="" id="">
+            <option  >  </option>
+        </select>
+    </div>
+    <div class="col-3">
+        <select [(ngModel)]="selecteStudent">
+            <option  > </option>
+        </select>
+    </div>
+    <div class="col-3">
+        {{selecteStudent}}
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th> Sr No</th>
+                    <th> Name</th>
+                    <th>City</th>
+                    <th>Status</th>
+                    <th>Attendance %</th>
+                    <th>Pincode</th>
+                    <th>Contact Nos</th>
+                </tr>
+            </thead>
+            <tbody> 
+                @for (stud of studentList; track $index;let first = $first) {
+                    <tr >
+                        <td> {{$index +1}} -== {{$first}}</td>
+                        <td> {{stud.name}} --  {{$odd}}</td>
+                        <td> {{stud.city}}</td>
+                        <td>
+                            @if (stud.isActive) {
+                                <span class="text-success">Active</span>
+                            } @else { 
+                                <span  class="text-danger">De-Active</span>
+                            }
+                        </td>
+                        <td>
+                            @if (stud.attedance < 50) {
+                                <span class="text-danger" >Low</span>
+                            }
+                           
+                            {{stud.attedance < 50 ? "Low" :""}} {{stud.attedance}}</td>
+                        <td>
+                            {{stud.address.pincode}}
+                        </td>
+                        <td>
+                            {{ stud.contactNo ? stud.contactNo[0]:"NA"}}
+                            <ul>
+                                @for (item of stud.contactNo; track $index) {
+                                    <li> {{item}}</li>
+                                }
+                               
+                            </ul>
+                        </td>
+                    </tr>
+                }
+                
+            </tbody>
+        </table>
+    </div>
+</div>

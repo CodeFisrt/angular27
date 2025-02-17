@@ -1,0 +1,62 @@
+<div class="row">
+    <div class="col-3">
+        <div [class]="div1Color" class="p-4" >
+            Div 1 -{{div1Color}}
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="p-4" [ngClass]="div1Color">
+            div 2 
+        </div>
+    </div>
+
+    <div class="col-3">
+        <div [class]="isActive ? 'bg-warning': 'bg-secondary'" class="p-4" >
+            Div 1 -{{div1Color}}
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="p-4" [ngClass]="isActive ? 'bg-warning':'bg-secondary'">
+            div 2 
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-3">
+        <button class="btn btn-success" (click)="addDiv1Color('bg-success')">Green</button>
+        <button class="btn btn-success" (click)="addDiv1Color('bg-danger')">Red</button>
+    </div>
+    <div class="col-3">
+        <input type="checkbox" [(ngModel)]="isActive">
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-3">
+        <div [class]="">
+            DIVV
+        </div>
+    </div>
+    <div class="col-3">
+        <div [ngClass]="{'bg-success':className == 'success','bg-warning': className == 'warning','bg-primary':className == 'primary'}">
+            DIVV
+        </div> 
+    </div>
+    <div class="col-3">
+        <div [ngStyle]="classObj">
+            Div Lats
+        </div>
+    </div>
+    <div class="col-3" [ngStyle]="{'color':classObj.color,'background-color':'yellow'}">
+            sdfasdas
+    </div>
+    <div class="col-3" >
+        <input type="text" [(ngModel)]="className">
+    </div>
+    <div class="col-3">
+        <div class="progress">
+            <div class="progress-bar bg-warning"  [ngStyle]="{width:progreesValue+'%'}"></div>
+        </div>
+        <input type="text" [(ngModel)]="progreesValue"> 
+    </div>
+</div>

@@ -1,0 +1,36 @@
+<p>variables works!</p>
+
+<label for=""> {{firstName}} </label>
+<input type="text" value="{{firstName}}">
+
+<select>
+    <option value="">Select Name</option>
+    <option value="">{{firstName}}</option>
+</select>
+
+ 
+
+<hr>
+
+<input type="text" [value]="firstName" (change)="onCheckChange($event)">
+
+<input [type]="inputType">
+
+<div [class]="divClassName">
+    div test
+</div>
+<hr>
+<button (click)="showWlecomeMsg()">Show Message</button>
+<button (click)="showMessage('Angular')">Angular</button>
+<button (click)="showMessage('React')">React</button>
+
+<input [(ngModel)]="isAcitve" (change)="onCheckChange($event)"
+ type="checkbox"/>
+
+<br>
+<input type="text" [(ngModel)]="firstName">
+
+
+<h1 ></h1>
+
+

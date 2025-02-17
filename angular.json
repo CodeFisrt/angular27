@@ -27,9 +27,12 @@
               }
             ],
             "styles": [
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              
+            ]
           },
           "configurations": {
             "production": {
@@ -62,7 +65,8 @@
               "buildTarget": "angular27:build:production"
             },
             "development": {
-              "buildTarget": "angular27:build:development"
+              "buildTarget": "angular27:build:development",
+              "port": 4203
             }
           },
           "defaultConfiguration": "development"
