@@ -6,6 +6,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { StructuralDirComponent } from './components/structural-dir/structural-dir.component';
 import { ControlFlowStatmentComponent } from './components/control-flow-statment/control-flow-statment.component';
 import { AttributeDirComponent } from './components/attribute-dir/attribute-dir.component';
+import { PipeComponent } from './components/pipe/pipe.component';
 
 export const routes: Routes = [
    
@@ -41,6 +42,10 @@ export const routes: Routes = [
     {
         path:"attrivute-dir",
         component: AttributeDirComponent
+    },
+    {
+        path:"pipe",
+        component: PipeComponent
     },
     {
         path:"**",

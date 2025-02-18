@@ -1,0 +1,50 @@
+<div class="row">
+    <div class="col-3">
+        Original Value :{{firstName}} After Pipe <span>{{firstName |uppercase}}</span>
+    </div>
+    <div class="col-3">
+        Original Value :{{lastName}} After Pipe <span>{{lastName |lowercase}}</span>
+    </div>
+    <div class="col-3">
+        Original Value :{{courseName}} After Pipe <span>{{courseName |titlecase}}</span>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-3">
+        Original Value :{{currentDate}} <br><span>{{currentDate |date}}</span>
+    </div>
+    <div class="col-3">
+        Original Value :{{currentDate}} <br> <span>{{currentDate |date:'dd-MM-yy'}}</span>
+    </div>
+    <div class="col-3">
+        Original Value :{{currentDate}} <br> <span>{{currentDate |date: 'dd/MMM/yyyy'}}</span>
+    </div>
+    <div class="col-3">
+        Original Value :{{currentDate}} <br> <span>{{currentDate |date: 'dd/MMMM/yyyy'}}</span>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-3">
+        Original Value :{{cityList}} <br> <span>{{cityList |slice:0:2}}</span>
+    </div>
+    <div class="col-3">
+        Original Value :{{cityList}}<br> <span>{{cityList |slice:3}}</span>
+    </div> 
+</div>
+
+<div class="row">
+    <div class="col-3">
+        Original Value :{{studentObj}} <br> <span>{{studentObj | json | uppercase}} </span>
+    </div>
+    <div class="col-3">
+        Original Value : <br> <span> </span>
+    </div> 
+</div>
+<button class="btn btn-primary" (click)="changeVisisiable()">Show Hide</button>
+@if (isDirCompVisiable) {
+    <div >
+        <app-attribute-dir></app-attribute-dir>
+    </div>
+}

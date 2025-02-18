@@ -1,5 +1,5 @@
 import { NgClass, NgStyle } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './attribute-dir.component.html',
   styleUrl: './attribute-dir.component.css'
 })
-export class AttributeDirComponent {
+export class AttributeDirComponent implements OnDestroy {
   div1Color: string = '';
   isActive: boolean =  false;
 
@@ -22,6 +22,9 @@ export class AttributeDirComponent {
 
   addDiv1Color(className: string) {
     this.div1Color =  className;
+  }
+  ngOnDestroy(): void {
+    debugger;
   }
 
 }
