@@ -7,6 +7,8 @@ import { StructuralDirComponent } from './components/structural-dir/structural-d
 import { ControlFlowStatmentComponent } from './components/control-flow-statment/control-flow-statment.component';
 import { AttributeDirComponent } from './components/attribute-dir/attribute-dir.component';
 import { PipeComponent } from './components/pipe/pipe.component';
+import { GetApiCallComponent } from './components/get-api-call/get-api-call.component';
+import { UserComponent } from './components/user/user.component';
 
 export const routes: Routes = [
    
@@ -46,6 +48,14 @@ export const routes: Routes = [
     {
         path:"pipe",
         component: PipeComponent
+    },
+    {
+        path:"get-api",
+        component: GetApiCallComponent
+    },
+    {
+        path:"user",
+        component: UserComponent
     },
     {
         path:"**",
