@@ -11,7 +11,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class UserComponent implements OnInit {
 
-  userList: any [] = [];
+  public userList: any [] = [];
   userObj: any = {
     "userId": 0,
     "userName": "",
@@ -19,7 +19,7 @@ export class UserComponent implements OnInit {
     "fullName": "",
     "password": ""
   }
-  http = inject(HttpClient);
+   http = inject(HttpClient);
 
 
   ngOnInit(): void {
@@ -76,7 +76,6 @@ export class UserComponent implements OnInit {
         }
       })
     }
-  
   }
 
 

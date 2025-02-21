@@ -9,6 +9,7 @@ import { AttributeDirComponent } from './components/attribute-dir/attribute-dir.
 import { PipeComponent } from './components/pipe/pipe.component';
 import { GetApiCallComponent } from './components/get-api-call/get-api-call.component';
 import { UserComponent } from './components/user/user.component';
+import { VendorComponent } from './components/vendor/vendor.component';
 
 export const routes: Routes = [
    
@@ -56,6 +57,10 @@ export const routes: Routes = [
     {
         path:"user",
         component: UserComponent
+    },
+    {
+        path:"vendor",
+        component: VendorComponent
     },
     {
         path:"**",
