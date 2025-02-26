@@ -1,68 +1,108 @@
 <div class="row">
-    <div class="col-8">
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Sr No</th>
-                    <th>Vendor Name</th>
-                    <th>Contact No</th>
-                    <th>Email Id</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let vendor of vendorList;let sr = index">
-                    <td> {{sr+1}}</td>
-                    <td>{{vendor.vendorName}}</td>
-                    <td>{{vendor.contactNo}}</td>
-                    <td>{{vendor.emailId}}</td>
-                    <td>
-                        <button class="btn btn-primary" (click)="onEdit(vendor)">Edit</button>
-                        <button class="btn btn-danger">Delete</button>
-                   </td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="col-12 text-center">
+        <app-btn-group [btnList]="myBtnList" (onBtnClicked)="onTabChange($event)" ></app-btn-group>
+    </div> --{{selectedTabName}}
+</div>
+<div class="row">
+    <div class="col-6">
+        <app-progres-bar [progressValue]="'40'" [className]="'bg-primary'"></app-progres-bar>
     </div>
-    <div class="col-4">
-        <div class="card">
-            <div class="card-header">
-                New Vendor
-            </div>
-            <div class="card-body" >
-                <div *ngIf="showAlertBox" class="alert alert-success">
-                    <strong>Success!</strong> {{alertMessage}}
-                  </div>
-                <form  [formGroup]="vendorForm">
-                    <div class="row">
-                        <div class="col-12">
-                            <label for="">Vendor Name</label>
-                            <input type="text" formControlName="vendorName" class="form-control">
-                        </div>
+    <div class="col-6">
+        <app-progres-bar [progressValue]="percent" [className]="'bg-success'"></app-progres-bar>
+    </div>
+</div>
+<input [(ngModel)]="percent">
+<div class="row">
+    @if (selectedTabName == "List") {
+        <div class="col-12">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Sr No</th>
+                        <th>Vendor Name</th>
+                        <th>Contact No</th>
+                        <th>Email Id</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let vendor of vendorList;let sr = index">
+                        <td> {{sr+1}}</td>
+                        <td>{{vendor.vendorName}}</td>
+                        <td>{{vendor.contactNo}}</td>
+                        <td>{{vendor.emailId}}</td>
+                        <td>
+                            <button class="btn btn-primary" (click)="onEdit(vendor)">Edit</button>
+                            <button class="btn btn-danger">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    } @else {
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    New Vendor
+                </div>
+                <div class="card-body">
+                    <div *ngIf="showAlertBox" class="alert alert-success">
+                        <strong>Success!</strong> {{alertMessage}}
                     </div>
-                    <div class="row">
-                        <div class="col-6">
-                            <label for="">Contact No</label>
-                            <input type="text" formControlName="contactNo" class="form-control">
+                    <app-alert [alertType]="'Success'" alertMessage="'Welcome to Vendor Page'"></app-alert>
+                    <form [formGroup]="vendorForm">
+                        <div class="row">
+                            <div class="col-12">
+                                <label for="">Vendor Name</label>
+                                <input type="text" formControlName="vendorName" class="form-control">
+                                @if (vendorForm.controls['vendorName'].touched) {
+                                <div class="text-danger"> 
+                                    @if (vendorForm.controls['vendorName'].errors?.['required']) {
+                                        <span>This is Required</span> 
+                                    }
+                                    @if (vendorForm.controls['vendorName'].errors?.['minlength']) {
+                                        <span>Min 4 Char Required</span> 
+                                    }
+                                </div>
+                                }
+                            </div>
                         </div>
-                        <div class="col-6">
-                            <label for="">Email</label>
-                            <input type="text" formControlName="emailId" class="form-control">
+                        <div class="row">
+                            <div class="col-6">
+                                <label for="">Contact No</label>
+                                <input type="text" formControlName="contactNo" class="form-control">
+                            </div>
+                            <div class="col-6">
+                                <label for="">Email</label>
+                                <input type="text" formControlName="emailId" class="form-control">
+                                @if (vendorForm.controls['emailId'].touched) {
+                                    <div class="text-danger"> 
+                                        @if (vendorForm.controls['emailId'].errors?.['required']) {
+                                            <span>This is Required</span> 
+                                        }
+                                        @if (vendorForm.controls['emailId'].errors?.['pattern']) {
+                                            <span>Email Not valid</span> 
+                                        }
+                                    </div>
+                                    }
+                            </div>
                         </div>
-                    </div>
     
-                    <div class="row pt-3">
-                        <div class="col-6">
-                            <button class="btn btn-secondary">Reset</button>
+                        <div class="row pt-3">
+                            <div class="col-6">
+                                <button class="btn btn-secondary">Reset</button>
+                            </div>
+                            <div class="col-6 text-end">
+                                <button class="btn btn-success" [disabled]="vendorForm.invalid" (click)="onSaveVendor()">Save</button>
+                            </div>
                         </div>
-                        <div class="col-6 text-end">
-                            <button class="btn btn-success" (click)="onSaveVendor()">Save</button>
-                        </div>
-                    </div>
-                </form>
-                
-               
+                    </form>
+    
+    
+                </div>
             </div>
         </div>
-    </div>
+    }
+  
+   
 </div>

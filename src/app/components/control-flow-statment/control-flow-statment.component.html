@@ -109,6 +109,7 @@
             <thead>
                 <tr>
                     <th> Sr No</th>
+                    <th>Percentage</th>
                     <th> Name</th>
                     <th>City</th>
                     <th>Status</th>
@@ -121,6 +122,9 @@
                 @for (stud of studentList; track $index;let first = $first) {
                     <tr >
                         <td> {{$index +1}} -== {{$first}}</td>
+                        <td>
+                            <app-progres-bar [progressValue]="stud.percentage" [className]="'bg-warning'"></app-progres-bar>
+                        </td>
                         <td> {{stud.name}} --  {{$odd}}</td>
                         <td> {{stud.city}}</td>
                         <td>

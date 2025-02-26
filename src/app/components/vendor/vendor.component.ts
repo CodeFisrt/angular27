@@ -1,11 +1,14 @@
 import { NgFor, NgIf } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, inject, OnInit } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AlertComponent } from "../../resuaableComponent/alert/alert.component";
+import { BtnGroupComponent } from "../../resuaableComponent/btn-group/btn-group.component";
+import { ProgresBarComponent } from "../../resuaableComponent/progres-bar/progres-bar.component";
 
 @Component({
   selector: 'app-vendor',
-  imports: [NgFor, ReactiveFormsModule, NgIf],
+  imports: [NgFor, ReactiveFormsModule,FormsModule, NgIf, AlertComponent, BtnGroupComponent, ProgresBarComponent],
   templateUrl: './vendor.component.html',
   styleUrl: './vendor.component.css'
 })
@@ -15,17 +18,25 @@ export class VendorComponent implements OnInit {
   vendorList: any[] = [];
   alertMessage: string = '';
   showAlertBox: boolean = false;
-
+  myBtnList: string[]= ['New Form','List'];
+  selectedTabName: string = '';
+  
+  percent: string = '';
   vendorForm: FormGroup = new FormGroup({
     vendorId: new FormControl(0),
-    vendorName: new FormControl(""),
+    vendorName: new FormControl("",[Validators.required,Validators.minLength(4),Validators.maxLength(10),Validators.min(200),Validators.max(300)]),
     contactNo: new FormControl(""),
-    emailId: new FormControl("")
+    emailId: new FormControl("",[Validators.required,Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")])
   })
 
 
   ngOnInit(): void {
     this.getVendor();
+  }
+
+  onTabChange(selectedBtnName: string) {
+    debugger;
+    this.selectedTabName =  selectedBtnName;
   }
 
   getVendor() {

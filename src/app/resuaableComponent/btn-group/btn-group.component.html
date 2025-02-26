@@ -1,0 +1,6 @@
+<div class="btn-group">'
+    @for (item of btnList; track $index) {
+        <button type="button" (click)="onBtnSelect(item)" 
+        [class]="selectedBtnText == item ?'btn btn-success':'btn btn-primary'">{{item}}</button> 
+    }
+</div>

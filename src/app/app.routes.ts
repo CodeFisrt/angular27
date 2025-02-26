@@ -10,6 +10,7 @@ import { PipeComponent } from './components/pipe/pipe.component';
 import { GetApiCallComponent } from './components/get-api-call/get-api-call.component';
 import { UserComponent } from './components/user/user.component';
 import { VendorComponent } from './components/vendor/vendor.component';
+import { EnrollmentComponent } from './components/enrollment/enrollment.component';
 
 export const routes: Routes = [
    
@@ -61,6 +62,10 @@ export const routes: Routes = [
     {
         path:"vendor",
         component: VendorComponent
+    },
+    {
+        path:"enrollment",
+        component: EnrollmentComponent
     },
     {
         path:"**",

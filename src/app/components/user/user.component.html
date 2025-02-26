@@ -1,3 +1,5 @@
+
+<app-btn-group [btnList]="['Basic Info','Contact','Current Project','Old Project']"></app-btn-group>
 <div class="row">
     <div class="col-8">
         <div class="row">
@@ -30,39 +32,64 @@
         </div>
     </div>
     <div class="col-4">
-        <div class="row">
-            <div class="col-6">
-                <label for="">user Name</label>
-                <input type="text" [(ngModel)]="userObj.userName" class="form-control">
+        <app-alert [alertMessage]="myMessage" [alertType]="'Danger'"></app-alert>
+        <form #form="ngForm">
+            <div class="row">
+                <div class="col-6">
+                    <label for="">user Name</label>
+                    <input type="text" #name="ngModel" name="userName"  [(ngModel)]="userObj.userName" min="20" max="30" class="form-control" required minlength="3"> 
+                    @if (name.touched || name.dirty) {
+                        <div class="text-danger"> 
+                            @if (name.errors?.['required']) {
+                                <span>This is Required</span>
+                            }
+                            @if (name.errors?.['minlength']) {
+                                <span>Min 3 Char Required</span>
+                            }
+                        </div>
+                    }
+                    
+                </div>
+                <div class="col-6">
+                    <label for="">Email</label>
+                    <input type="text" #email="ngModel" name="emailId" [(ngModel)]="userObj.emailId" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" class="form-control">
+                    <div class="text-danger"> 
+                        @if (email.errors?.['required']) {
+                            <span>This is Required</span>
+                        }
+                        @if (email.errors?.['pattern']) {
+                            <span>Email Not Valid</span>
+                        }
+                       
+                       
+                    </div>
+                </div>
+                <div class="col-6">
+                    <label for="">Full Name</label>
+                    <input type="text" name="fullName" [(ngModel)]="userObj.fullName" class="form-control">
+                </div>
+                <div class="col-6">
+                    <label for="">Password</label>
+                    <input type="text" name="password" [(ngModel)]="userObj.password" class="form-control">
+                </div>
             </div>
-            <div class="col-6">
-                <label for="">Email</label>
-                <input type="text" [(ngModel)]="userObj.emailId" class="form-control">
+            {{form.invalid|json}}
+            <div class="row pt-4">
+                <div class="col-6">
+                    <button class="btn btn-secondary">Reset</button>
+                </div>
+                <div class="col-6 text-end">
+                    @if (userObj.userId == 0) {
+                        <button class="btn btn-success" [disabled]="form.invalid" (click)="onSaveUser()">Save User</button>
+                    } @else {
+                        <button class="btn btn-warning" (click)="onUpdateUser()">Update User</button>
+                    }
+                    
+                    
+                </div>
             </div>
-            <div class="col-6">
-                <label for="">Full Name</label>
-                <input type="text" [(ngModel)]="userObj.fullName" class="form-control">
-            </div>
-            <div class="col-6">
-                <label for="">Password</label>
-                <input type="text" [(ngModel)]="userObj.password" class="form-control">
-            </div>
-        </div>
-        {{userObj|json}}
-        <div class="row pt-4">
-            <div class="col-6">
-                <button class="btn btn-secondary">Reset</button>
-            </div>
-            <div class="col-6 text-end">
-                @if (userObj.userId == 0) {
-                    <button class="btn btn-success" (click)="onSaveUser()">Save User</button>
-                } @else {
-                    <button class="btn btn-warning" (click)="onUpdateUser()">Update User</button>
-                }
-                
-                
-            </div>
-        </div>
+        </form>
+      
         
     </div>
 </div>
