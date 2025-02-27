@@ -5,6 +5,7 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { AlertComponent } from "../../resuaableComponent/alert/alert.component";
 import { BtnGroupComponent } from "../../resuaableComponent/btn-group/btn-group.component";
 import { ProgresBarComponent } from "../../resuaableComponent/progres-bar/progres-bar.component";
+import { IVendorList } from '../../models/vendor';
 
 @Component({
   selector: 'app-vendor',
@@ -15,11 +16,17 @@ import { ProgresBarComponent } from "../../resuaableComponent/progres-bar/progre
 export class VendorComponent implements OnInit {
 
   http = inject(HttpClient);
-  vendorList: any[] = [];
+  vendorList: IVendorList[] = [];
   alertMessage: string = '';
   showAlertBox: boolean = false;
   myBtnList: string[]= ['New Form','List'];
   selectedTabName: string = '';
+
+  vendorObj: IVendorList = {
+    contactNo:'',
+    emailId: '',
+    vendorId: 0 
+  }
   
   percent: string = '';
   vendorForm: FormGroup = new FormGroup({

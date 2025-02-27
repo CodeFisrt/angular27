@@ -5,6 +5,9 @@ import { FormsModule } from '@angular/forms';
 import { UserService } from '../../service/user.service';
 import { AlertComponent } from '../../resuaableComponent/alert/alert.component';
 import { BtnGroupComponent } from "../../resuaableComponent/btn-group/btn-group.component";
+import { UserClass } from '../../models/User';
+
+ 
 
 @Component({
   selector: 'app-user',
@@ -16,15 +19,11 @@ export class UserComponent implements OnInit {
 
   myMessage = "This is User Page";
   public userList: any [] = [];
-  userObj: any = {
-    "userId": 0,
-    "userName": "",
-    "emailId": "",
-    "fullName": "",
-    "password": ""
-  }
-   http = inject(HttpClient);
-   userSrv=  inject(UserService);
+  userObj: UserClass = new UserClass();
+  http = inject(HttpClient);
+  userSrv=  inject(UserService);
+  isShowLoader: boolean =  false;
+  isApiInprogress: boolean = false;
 
 
   ngOnInit(): void {
@@ -41,10 +40,13 @@ export class UserComponent implements OnInit {
     //   this.userList = res.data;
     // })
     debugger;
+    this.isShowLoader =  true;
     this.userSrv.getAllUsers().subscribe((res:any)=>{
       debugger;
-      this.userList =  res.data;
+      this.userList =  res.data; 
+      this.isShowLoader =  false;
     })
+   
   }
 
   onEdit(data: any) {
@@ -64,15 +66,20 @@ export class UserComponent implements OnInit {
     //   }
     // })
     debugger;
-    this.userSrv.createNewUser(this.userObj).subscribe((res:any)=>{
-        debugger;
-        if(res.result) {
-          alert("Customer Created Success");
-          this.getUser();
-        } else {
-          alert(res.message)
-        }
-      })
+    if(this.isApiInprogress == false) {
+      this.isApiInprogress =  true;
+      this.userSrv.createNewUser(this.userObj).subscribe((res:any)=>{
+          debugger;
+          this.isApiInprogress =  false;
+          if(res.result) {
+            alert("Customer Created Success");
+            this.getUser();
+          } else {
+            alert(res.message)
+          }
+        })
+    }
+   
   }
 
   onUpdateUser() {
@@ -105,3 +112,4 @@ export class UserComponent implements OnInit {
 
 
 }
+

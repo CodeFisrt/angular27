@@ -11,6 +11,7 @@ import { GetApiCallComponent } from './components/get-api-call/get-api-call.comp
 import { UserComponent } from './components/user/user.component';
 import { VendorComponent } from './components/vendor/vendor.component';
 import { EnrollmentComponent } from './components/enrollment/enrollment.component';
+import { BulkUpdateComponent } from './components/bulk-update/bulk-update.component';
 
 export const routes: Routes = [
    
@@ -66,6 +67,10 @@ export const routes: Routes = [
     {
         path:"enrollment",
         component: EnrollmentComponent
+    },
+    {
+        path:"bulk",
+        component: BulkUpdateComponent
     },
     {
         path:"**",

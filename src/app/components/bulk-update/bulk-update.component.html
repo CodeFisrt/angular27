@@ -1,0 +1,31 @@
+<div class="row">
+    <div class="col-5">
+        <button class="btn btn-success" (click)="addNew()">Add new</button>
+        <button class="btn btn-success" (click)="onSaveAll()">Bulk Upload</button>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Sr No</th>
+                    <th>Dept Name</th>
+                    <th>Logo</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (item of userList; track $index) {
+                    <tr>
+                        <td>
+                            {{$index+1}}
+                        </td>
+                        <td>
+                            <input type="text" [(ngModel)]="item.departmentName">
+                        </td>
+                        <td>
+                            <input type="text" [(ngModel)]="item.departmentLogo">
+                        </td>
+                    </tr>
+                }
+                
+            </tbody>
+        </table>
+    </div>
+</div>
