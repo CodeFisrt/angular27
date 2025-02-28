@@ -12,66 +12,90 @@ import { UserComponent } from './components/user/user.component';
 import { VendorComponent } from './components/vendor/vendor.component';
 import { EnrollmentComponent } from './components/enrollment/enrollment.component';
 import { BulkUpdateComponent } from './components/bulk-update/bulk-update.component';
+import { LoginComponent } from './components/login/login.component';
+import { LayoutComponent } from './components/layout/layout.component';
+import { authGuard } from './guard/auth.guard';
+import { InfoComponent } from './components/info/info.component';
 
 export const routes: Routes = [
    
 
+
+
     {
         path:"",
-        redirectTo:"dashbaord",
+        redirectTo:"login",
         pathMatch: 'full'
     },
     {
-        path:"dashbaord",
-        component:DashboardComponent,
-        title:"Dashboard"
+        path:"login",
+        component: LoginComponent
     },
     {
-        path:"employee-list",
-        component:EmployeeComponent,
-        title:"Employee List"
+        path:"information",
+        component: InfoComponent
     },
     {
-        path:'variable',
-        component:VariablesComponent,
-        title:'Variable Page'
+        path:'',
+        component:LayoutComponent,
+        canActivate: [authGuard],
+        children: [
+            {
+                path:"dashbaord",
+                component:DashboardComponent,
+                title:"Dashboard"
+            },
+            {
+                path:"employee-list",
+                component:EmployeeComponent,
+                title:"Employee List"
+            },
+            {
+                path:'variable',
+                component:VariablesComponent,
+                title:'Variable Page',
+               
+            },
+            {
+                path:"stuructual-dir",
+                component: StructuralDirComponent
+            },
+            {
+                path:"control-flow",
+                component: ControlFlowStatmentComponent
+            },
+            {
+                path:"attrivute-dir",
+                component: AttributeDirComponent
+            },
+            {
+                path:"pipe",
+                component: PipeComponent
+            },
+            {
+                path:"get-api",
+                component: GetApiCallComponent
+            },
+            {
+                path:"user",
+                component: UserComponent
+            },
+            {
+                path:"vendor",
+                component: VendorComponent
+            },
+            {
+                path:"enrollment",
+                component: EnrollmentComponent
+            },
+            {
+                path:"bulk",
+                component: BulkUpdateComponent
+            },
+        ]
     },
-    {
-        path:"stuructual-dir",
-        component: StructuralDirComponent
-    },
-    {
-        path:"control-flow",
-        component: ControlFlowStatmentComponent
-    },
-    {
-        path:"attrivute-dir",
-        component: AttributeDirComponent
-    },
-    {
-        path:"pipe",
-        component: PipeComponent
-    },
-    {
-        path:"get-api",
-        component: GetApiCallComponent
-    },
-    {
-        path:"user",
-        component: UserComponent
-    },
-    {
-        path:"vendor",
-        component: VendorComponent
-    },
-    {
-        path:"enrollment",
-        component: EnrollmentComponent
-    },
-    {
-        path:"bulk",
-        component: BulkUpdateComponent
-    },
+
+    
     {
         path:"**",
         component: NotFoundComponent

@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="login-container">
+        <h3 class="text-center">Login</h3>
+        <form>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" name="email" [(ngModel)]="loginObj.email" class="form-control" id="email" placeholder="Enter email">
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" name="password" [(ngModel)]="loginObj.password" class="form-control" id="password" placeholder="Enter password">
+            </div>
+            <button type="button" (click)="onLogin()" class="btn btn-primary w-100">Login</button>
+            <a routerLink="/information">information</a>
+        </form>
+    </div>
+</div>
