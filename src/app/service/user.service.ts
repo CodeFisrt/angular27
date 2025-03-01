@@ -18,6 +18,10 @@ export class UserService {
     return this.http.post("https://projectapi.gerasim.in/api/BankLoan/RegisterCustomer",obj)
   }
 
+  login(obj: any) {
+    return this.http.post("https://projectapi.gerasim.in/api/BankLoan/login",obj);
+  }
+
   getSumOfTwoNo(num1: number, num2: number) {
     return num1 + num2;
   }
