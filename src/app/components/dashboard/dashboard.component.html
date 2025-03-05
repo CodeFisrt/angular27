@@ -1,10 +1,12 @@
 <p>dashboard works!</p>
 <h3 appHighlight>dashboard Page</h3>
 <p appCopypaste>This is Sample text</p>
-<h4 appHighlight>
+<h4 appHighlight #myh4>
     Sampl text
 </h4>
 
-<input type="text" appNumberonly name="" id="">
+<input type="text" appNumberonly  #nameRef>
 
+<button (click)="readValue()">Read Value</button>
+<app-pipe></app-pipe>
 <app-employee></app-employee>

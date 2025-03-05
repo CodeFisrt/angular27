@@ -7,7 +7,6 @@ export class HighlightDirective {
 
   constructor(private elementRef: ElementRef) {
     debugger;
-    
    }
 
    @HostListener("mouseenter")

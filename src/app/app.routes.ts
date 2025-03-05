@@ -16,6 +16,7 @@ import { LoginComponent } from './components/login/login.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { authGuard } from './guard/auth.guard';
 import { InfoComponent } from './components/info/info.component';
+import { SignalExampleComponent } from './components/signal-example/signal-example.component';
 
 export const routes: Routes = [
    
@@ -71,6 +72,10 @@ export const routes: Routes = [
             {
                 path:"pipe",
                 component: PipeComponent
+            },
+            {
+                path:"signal",
+                component: SignalExampleComponent
             },
             {
                 path:"get-api",

@@ -1,0 +1,15 @@
+<p>{{cityName}}</p>
+
+<button (click)="changeVal()"> change Courser Name</button>
+courseName =>{{courseName()}}
+
+<ul>
+   @for (item of cityList(); track $index) {
+    <li>{{item}}</li>
+   } 
+</ul>
+<input type="text" [(ngModel)]="cityName" placeholder="Entyer Cty">
+ <button (click)="addnEwCity()">Add City</button>
+ <button (click)="AddMpCities()">Add MP CIty</button>
+ {{studentObj() |json}}
+ <button (click)="changeStudName()">Chnage Name</button>
