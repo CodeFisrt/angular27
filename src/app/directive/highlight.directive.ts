@@ -6,7 +6,7 @@ import { Directive, ElementRef, HostListener } from '@angular/core';
 export class HighlightDirective {
 
   constructor(private elementRef: ElementRef) {
-    debugger;
+    
    }
 
    @HostListener("mouseenter")

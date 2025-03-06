@@ -15,7 +15,7 @@ export class BtnGroupComponent {
 
 
   onBtnSelect(btnName: string) {
-    debugger;
+    
     this.selectedBtnText = btnName;
     this.onBtnClicked.emit(btnName)
   }

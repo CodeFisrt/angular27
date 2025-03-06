@@ -37,6 +37,6 @@ export class ControlFlowStatmentComponent {
 
   onShowDiv1() {
     this.isDivVisiable = "Yes";
-    debugger;
+    
   }
 }

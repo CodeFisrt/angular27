@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import { UserService } from '../../service/user.service';
 
 @Component({
   selector: 'app-layout',
@@ -9,12 +10,19 @@ import { Router, RouterLink, RouterOutlet } from '@angular/router';
 })
 export class LayoutComponent {
 
-  constructor(private router: Router){
+  constructor(private router: Router,private user: UserService){
 
   }
 
   onLogoff() {
     sessionStorage.removeItem("27user")
     this.router.navigate(['login'])
+  }
+
+  onSerachChnage(event:any) {
+    
+    const serachText =  event.target.value;
+    this.user.searchChange$.next(serachText);
+    this.user.searchBehavor.next(serachText);
   }
 }

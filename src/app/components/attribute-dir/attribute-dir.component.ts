@@ -24,7 +24,7 @@ export class AttributeDirComponent implements OnDestroy {
     this.div1Color =  className;
   }
   ngOnDestroy(): void {
-    debugger;
+    
   }
 
 }

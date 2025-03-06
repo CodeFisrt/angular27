@@ -34,9 +34,9 @@ export class LoginComponent {
     // } else {
     //   alert("wrong Credentials")
     // }
-    debugger;
+    
     // this.http.post("https://projectapi.gerasim.in/api/BankLoan/login", this.loginObj).subscribe((res: any) => {
-    //   debugger;
+    //   
     //   if (res.result) {
     //     this.router.navigateByUrl("/dashbaord");
     //     sessionStorage.setItem("27user", JSON.stringify(res.data))
@@ -45,9 +45,10 @@ export class LoginComponent {
     //   }
     // }) 
     this.userSrv.login(this.loginObj).subscribe((res: any) => {
-        debugger;
+        
         if (res.result) {
           this.router.navigateByUrl("/dashbaord");
+          localStorage.setItem('27Token', res.data.token);
           sessionStorage.setItem("27user", JSON.stringify(res.data))
         } else {
           alert(res.message)
@@ -61,11 +62,11 @@ export class LoginComponent {
 }
 
 class Login {
-  userName: string;
+  emailId: string;
   password: string;
 
   constructor() {
-    this.userName = "";
+    this.emailId = "";
     this.password = "";
   }
 }

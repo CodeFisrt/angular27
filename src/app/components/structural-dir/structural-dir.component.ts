@@ -35,7 +35,7 @@ export class StructuralDirComponent {
 
   onShowDiv1() {
     this.isDivVisiable = "Yes";
-    debugger;
+    
   }
 
 }

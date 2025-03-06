@@ -1,25 +1,31 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
+  searchChange$: Subject<string> = new Subject<string>;
+
+  searchBehavor: BehaviorSubject<string> = new BehaviorSubject<string>("");
+
+
   constructor(private http: HttpClient) { }
 
   getAllUsers() {
-    debugger;
+    
     return this.http.get("https://projectapi.gerasim.in/api/BankLoan/GetAllUsers");
   }
 
   createNewUser(obj:any) {
-    debugger;
+    
     return this.http.post("https://projectapi.gerasim.in/api/BankLoan/RegisterCustomer",obj)
   }
 
   login(obj: any) {
-    return this.http.post("https://projectapi.gerasim.in/api/BankLoan/login",obj);
+    return this.http.post("https://projectapi.gerasim.in/api/UserApp/login",obj);
   }
 
   getSumOfTwoNo(num1: number, num2: number) {

@@ -30,15 +30,16 @@ export class GetApiCallComponent implements OnInit {
     fetch("https://projectapi.gerasim.in/api/RfqTracker/GetAllCustomer")
     .then(response => response.json())
     .then(data => {
-      debugger;
-      console.log(data)}) 
+      
+      console.log(data)}
+    ) 
      
     
   }
 
   getAllRFQ() {
     this.http.get("https://projectapi.gerasim.in/api/RfqTracker/GetRFQs").subscribe((res:any) => {
-      debugger;
+      
       this.rfqList =  res;
     });
   }
@@ -46,7 +47,7 @@ export class GetApiCallComponent implements OnInit {
 
   getAllCustomer() {
     this.http.get("https://projectapi.gerasim.in/api/RfqTracker/GetAllCustomer").subscribe((res:any)=>{
-      debugger;
+      
       this.customerList =  res.data;
     })
   }

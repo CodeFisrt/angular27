@@ -6,6 +6,7 @@ import { AlertComponent } from "../../resuaableComponent/alert/alert.component";
 import { BtnGroupComponent } from "../../resuaableComponent/btn-group/btn-group.component";
 import { ProgresBarComponent } from "../../resuaableComponent/progres-bar/progres-bar.component";
 import { IVendorList } from '../../models/vendor';
+import { UserService } from '../../service/user.service';
 
 @Component({
   selector: 'app-vendor',
@@ -35,14 +36,22 @@ export class VendorComponent implements OnInit {
     contactNo: new FormControl(""),
     emailId: new FormControl("",[Validators.required,Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")])
   })
+  userService= inject(UserService)
 
 
   ngOnInit(): void {
+    this.userService.searchChange$.subscribe((res:string)=>{
+      debugger;
+    })
+    this.userService.searchBehavor.subscribe((res:string)=>{
+      debugger;
+      
+    })
     this.getVendor();
   }
 
   onTabChange(selectedBtnName: string) {
-    debugger;
+    
     this.selectedTabName =  selectedBtnName;
   }
 
@@ -63,7 +72,7 @@ export class VendorComponent implements OnInit {
   }
 
   onSaveVendor() {
-    debugger;
+    
     const formValue = this.vendorForm.value;
     this.http.post("https://projectapi.gerasim.in/api/BusBooking/PostBusVendor", formValue).subscribe((res: any) => {
       this.showAlertBox = true;

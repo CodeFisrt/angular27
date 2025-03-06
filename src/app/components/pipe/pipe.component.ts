@@ -23,14 +23,14 @@ export class PipeComponent implements OnInit,AfterViewInit,AfterViewChecked,Afte
   isDirCompVisiable: boolean =  false;
 
   constructor(){
-    debugger;
+    
     this.courseName = "full stack development";
   }
 
  
 
   ngOnInit(): void {
-    debugger;
+    
     this.courseName = "Mern Stack";
     console.log("ngOnInit")
   }
@@ -54,7 +54,7 @@ export class PipeComponent implements OnInit,AfterViewInit,AfterViewChecked,Afte
     this.isDirCompVisiable =  !this.isDirCompVisiable;
   }
   ngOnDestroy(): void {
-    debugger;
+    
     console.log("ngOnDestroy")
   }
 

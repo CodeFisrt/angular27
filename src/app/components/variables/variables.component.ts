@@ -28,7 +28,7 @@ export class VariablesComponent {
   divClassName: string;
 
   constructor() {
-    debugger;
+    
     this.divClassName = "primary"
     this.firstName = "Chetan";
     this.firstName = 'chetan';
@@ -51,7 +51,7 @@ export class VariablesComponent {
   }
 
   onCheckChange(event: any) {
-    debugger;
+    
   }
 
 

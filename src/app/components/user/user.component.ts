@@ -24,13 +24,20 @@ export class UserComponent implements OnInit {
   userSrv=  inject(UserService);
   isShowLoader: boolean =  false;
   isApiInprogress: boolean = false;
-
+  searchText: string = '';
 
   ngOnInit(): void {
     this.getUser();
-    debugger;
+    this.userSrv.searchChange$.subscribe((res:string)=>{
+      debugger;
+      this.searchText = res;
+    })
+    this.userSrv.searchBehavor.subscribe((res:string)=>{
+      debugger;
+      this.searchText = res;
+    })
     const result  =  this.userSrv.getSumOfTwoNo(4,8);
-    debugger;
+    
   }
 
 
@@ -39,10 +46,10 @@ export class UserComponent implements OnInit {
     // this.http.get("https://projectapi.gerasim.in/api/BankLoan/GetAllUsers").subscribe((res:any)=>{
     //   this.userList = res.data;
     // })
-    debugger;
+    
     this.isShowLoader =  true;
     this.userSrv.getAllUsers().subscribe((res:any)=>{
-      debugger;
+      
       this.userList =  res.data; 
       this.isShowLoader =  false;
     })
@@ -50,14 +57,14 @@ export class UserComponent implements OnInit {
   }
 
   onEdit(data: any) {
-    debugger;
+    
     this.userObj =  data;
   }
  
   onSaveUser() {
-    debugger;
+    
     // this.http.post("https://projectapi.gerasim.in/api/BankLoan/RegisterCustomer",this.userObj).subscribe((res:any)=>{
-    //   debugger;
+    //   
     //   if(res.result) {
     //     alert("Customer Created Success");
     //     this.getUser();
@@ -65,11 +72,11 @@ export class UserComponent implements OnInit {
     //     alert(res.message)
     //   }
     // })
-    debugger;
+    
     if(this.isApiInprogress == false) {
       this.isApiInprogress =  true;
       this.userSrv.createNewUser(this.userObj).subscribe((res:any)=>{
-          debugger;
+          
           this.isApiInprogress =  false;
           if(res.result) {
             alert("Customer Created Success");
@@ -84,7 +91,7 @@ export class UserComponent implements OnInit {
 
   onUpdateUser() {
     this.http.post("https://projectapi.gerasim.in/api/BankLoan/updateUser",this.userObj).subscribe((res:any)=>{
-      debugger;
+      
       if(res.result) {
         alert("Customer UPdated Success");
         this.getUser();
@@ -95,11 +102,11 @@ export class UserComponent implements OnInit {
   }
 
   onDelete(id: number) {
-    debugger;
+    
     const isDelete =  confirm("Are you Sure want to Delete");
     if(isDelete == true) {
       this.http.delete("https://projectapi.gerasim.in/api/BankLoan/DeleteUserByUserId?userId=" +id).subscribe((res:any)=>{
-        debugger;
+        
         if(res.result) {
           alert("Customer UPdated Success");
           this.getUser();
