@@ -6,12 +6,13 @@ import { UserService } from '../../service/user.service';
 import { AlertComponent } from '../../resuaableComponent/alert/alert.component';
 import { BtnGroupComponent } from "../../resuaableComponent/btn-group/btn-group.component";
 import { UserClass } from '../../models/User';
+import { CardComponent } from '../../resuaableComponent/card/card.component';
 
  
 
 @Component({
   selector: 'app-user',
-  imports: [FormsModule, JsonPipe, AlertComponent, BtnGroupComponent],
+  imports: [FormsModule,CardComponent, JsonPipe, AlertComponent, BtnGroupComponent],
   templateUrl: './user.component.html',
   styleUrl: './user.component.css'
 })

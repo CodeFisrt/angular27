@@ -17,6 +17,7 @@ import { LayoutComponent } from './components/layout/layout.component';
 import { authGuard } from './guard/auth.guard';
 import { InfoComponent } from './components/info/info.component';
 import { SignalExampleComponent } from './components/signal-example/signal-example.component';
+import { NgDirectivesComponent } from './components/ng-directives/ng-directives.component';
 
 export const routes: Routes = [
    
@@ -96,6 +97,10 @@ export const routes: Routes = [
             {
                 path:"bulk",
                 component: BulkUpdateComponent
+            },
+            {
+                path:"ng-directive",
+                component: NgDirectivesComponent
             },
         ]
     },
