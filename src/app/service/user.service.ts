@@ -8,6 +8,7 @@ import { BehaviorSubject, Subject } from 'rxjs';
 export class UserService {
 
   searchChange$: Subject<string> = new Subject<string>;
+  loggedUserNAme: string = "Chetan";
 
   searchBehavor: BehaviorSubject<string> = new BehaviorSubject<string>("");
 

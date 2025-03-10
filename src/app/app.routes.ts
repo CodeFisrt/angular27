@@ -18,6 +18,7 @@ import { authGuard } from './guard/auth.guard';
 import { InfoComponent } from './components/info/info.component';
 import { SignalExampleComponent } from './components/signal-example/signal-example.component';
 import { NgDirectivesComponent } from './components/ng-directives/ng-directives.component';
+import { FormArrayComponent } from './components/form-array/form-array.component';
 
 export const routes: Routes = [
    
@@ -40,7 +41,7 @@ export const routes: Routes = [
     {
         path:'',
         component:LayoutComponent,
-        canActivate: [authGuard],
+       // canActivate: [authGuard],
         children: [
             {
                 path:"dashbaord",
@@ -61,6 +62,10 @@ export const routes: Routes = [
             {
                 path:"stuructual-dir",
                 component: StructuralDirComponent
+            },
+            {
+                path:"form-array",
+                component: FormArrayComponent
             },
             {
                 path:"control-flow",

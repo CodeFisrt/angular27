@@ -1,0 +1,69 @@
+<div class="container">
+    <h2 class="mb-4">Employee Form</h2>
+    <form  [formGroup]="employeeForm"> 
+    <div class="row">
+        <div class="col-7">
+            <div class="row">
+                <div class="col-12">
+                    <div class="mb-3">
+                        <label class="form-label">Name:</label>
+                        <input type="text" formControlName="name" class="form-control" id="name">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">City:</label>
+                        <input type="text"  formControlName="city"class="form-control" id="city">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Address:</label>
+                        <input type="text" formControlName="addrss" class="form-control" id="addrss">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Employee ID:</label>
+                        <input type="text" [formControlName]="'empid'" class="form-control" id="empid">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-5"> 
+            <h4 class="mt-4">Family Members</h4>
+            <button type="button" (click)="AddNewFailyForm()" class="btn btn-primary mt-3" id="addFamily">Add Family Member</button>
+            <div id="familyContainer" formArrayName="familyList">
+                @for (item of familyArray.controls; track $index) {
+                    <div class="family-member border p-3 mb-3" [formGroupName]="$index" >
+                        <h5>Family Member  </h5>
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="mb-2">
+                                    <label class="form-label">Member Name:</label>
+                                    <input type="text" formControlName="memberName" class="form-control"  >
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="mb-2">
+                                    <label class="form-label">Age:</label>
+                                    <input type="number"  formControlName="age" class="form-control"  >
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="mb-2">
+                                    <label class="form-label">Relation:</label>
+                                    <input type="text"  formControlName="relation" class="form-control"  >
+                                </div>
+                            </div>
+                        </div> 
+                        <button type="button" (click)="removeForm($index)" class="btn btn-danger btn-sm remove-family"
+                             >Remove</button>
+                    </div>
+                }
+                
+            </div>
+        </div>
+    </div> 
+        <!-- Employee Details -->
+        
+
+
+       
+        <button type="button" (click)="onSave()" class="btn btn-success mt-3">Submit</button>
+    </form>
+</div>
