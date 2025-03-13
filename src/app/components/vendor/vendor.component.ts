@@ -7,6 +7,7 @@ import { BtnGroupComponent } from "../../resuaableComponent/btn-group/btn-group.
 import { ProgresBarComponent } from "../../resuaableComponent/progres-bar/progres-bar.component";
 import { IVendorList } from '../../models/vendor';
 import { UserService } from '../../service/user.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-vendor',
@@ -21,13 +22,16 @@ export class VendorComponent implements OnInit {
   alertMessage: string = '';
   showAlertBox: boolean = false;
   myBtnList: string[]= ['New Form','List'];
-  selectedTabName: string = '';
+  selectedTabName: string = 'List';
 
   vendorObj: IVendorList = {
     contactNo:'',
     emailId: '',
     vendorId: 0 
   }
+ 
+   searchText: FormControl = new FormControl("");
+  
   
   percent: string = '';
   vendorForm: FormGroup = new FormGroup({
@@ -37,14 +41,20 @@ export class VendorComponent implements OnInit {
     emailId: new FormControl("",[Validators.required,Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")])
   })
   userService= inject(UserService)
+  router = inject(Router);
 
+  constructor(private activatedRoute:ActivatedRoute) {
+    this.activatedRoute.data.subscribe((res:any)=>{
+      
+    }); 
+  }
 
   ngOnInit(): void {
     this.userService.searchChange$.subscribe((res:string)=>{
-      debugger;
+      
     })
     this.userService.searchBehavor.subscribe((res:string)=>{
-      debugger;
+      
       
     })
     this.getVendor();
@@ -63,12 +73,14 @@ export class VendorComponent implements OnInit {
     })
   }
   onEdit(data: any) {
-    this.vendorForm = new FormGroup({
-      vendorId: new FormControl(data.vendorId),
-      vendorName: new FormControl(data.vendorName),
-      contactNo: new FormControl(data.contactNo),
-      emailId: new FormControl(data.emailId)
-    })
+    this.router.navigateByUrl('vendor-detail/'+data.vendorId);
+    this.router.navigate(['vendor-detail',data.vendorId],)
+    // this.vendorForm = new FormGroup({
+    //   vendorId: new FormControl(data.vendorId),
+    //   vendorName: new FormControl(data.vendorName),
+    //   contactNo: new FormControl(data.contactNo),
+    //   emailId: new FormControl(data.emailId)
+    // })
   }
 
   onSaveVendor() {

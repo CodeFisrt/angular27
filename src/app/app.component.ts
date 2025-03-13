@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { Router, RouterEvent, RouterLink, RouterOutlet } from '@angular/router';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { EmployeeComponent } from "./components/employee/employee.component";
 import { VariablesComponent } from "./components/variables/variables.component";
@@ -12,4 +12,9 @@ import { VariablesComponent } from "./components/variables/variables.component";
 })
 export class AppComponent {
   title = 'angular27';
+  constructor(private router: Router) {
+    this.router.events.subscribe((event:any)=>{
+      debugger;
+    })
+  }
 }

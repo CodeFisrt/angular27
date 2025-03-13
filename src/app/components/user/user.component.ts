@@ -30,11 +30,11 @@ export class UserComponent implements OnInit {
   ngOnInit(): void {
     this.getUser();
     this.userSrv.searchChange$.subscribe((res:string)=>{
-      debugger;
+      
       this.searchText = res;
     })
     this.userSrv.searchBehavor.subscribe((res:string)=>{
-      debugger;
+      
       this.searchText = res;
     })
     const result  =  this.userSrv.getSumOfTwoNo(4,8);

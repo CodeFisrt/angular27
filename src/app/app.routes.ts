@@ -19,6 +19,8 @@ import { InfoComponent } from './components/info/info.component';
 import { SignalExampleComponent } from './components/signal-example/signal-example.component';
 import { NgDirectivesComponent } from './components/ng-directives/ng-directives.component';
 import { FormArrayComponent } from './components/form-array/form-array.component';
+import { loadResolver } from './service/load.resolver';
+import { VendorDetailComponent } from './components/vendor-detail/vendor-detail.component';
 
 export const routes: Routes = [
    
@@ -41,7 +43,7 @@ export const routes: Routes = [
     {
         path:'',
         component:LayoutComponent,
-       // canActivate: [authGuard],
+       // canActivate: [authGuard], 
         children: [
             {
                 path:"dashbaord",
@@ -51,12 +53,13 @@ export const routes: Routes = [
             {
                 path:"employee-list",
                 component:EmployeeComponent,
-                title:"Employee List"
+                title:"Employee List",
             },
             {
                 path:'variable',
                 component:VariablesComponent,
                 title:'Variable Page',
+                resolve: {data:loadResolver}
                
             },
             {
@@ -93,7 +96,12 @@ export const routes: Routes = [
             },
             {
                 path:"vendor",
-                component: VendorComponent
+                component: VendorComponent,
+                resolve: {headingData:loadResolver}
+            },
+            {
+                path:'vendor-detail/:vendorid',
+                component: VendorDetailComponent
             },
             {
                 path:"enrollment",
